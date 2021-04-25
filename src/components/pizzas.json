@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "name":"margherita",
+        "price":10,
+        "description":"Some description"
+    },
+    { 
+        "id": 0,
+        "name": "napoletana",
+        "price": 13,
+        "description":"Some description"
+    }
+]
