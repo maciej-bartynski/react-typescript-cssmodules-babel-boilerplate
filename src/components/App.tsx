@@ -1,14 +1,17 @@
 import React from "react";
-import Pizzas from "./Pizzas";
+import Pizzas from "./Pizza/Pizzas";
 import pizzas from "./../data/pizzas.json";
-import LogoSVG from "./../svg/logo.svg";
+import Header from "./Header/Header";
+import Cart from "./Cart/Cart";
+import { CartContextProvider } from "./../context/cart";
 
 const App = () => {
     return (
-        <div>
-            <LogoSVG/>
+        <CartContextProvider>
+            <Header />
+            <Cart />
             <Pizzas pizzas={pizzas}/>
-        </div>
+        </CartContextProvider>
     )
 }
 

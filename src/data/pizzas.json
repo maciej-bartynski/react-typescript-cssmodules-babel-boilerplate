@@ -1,14 +1,32 @@
 [
     {
-        "id": 1,
+        "id": 0,
         "name":"margherita",
         "price":10,
         "description":"Some description"
     },
     { 
-        "id": 0,
+        "id": 1,
         "name": "napoletana",
         "price": 13,
+        "description":"Some description"
+    },
+    { 
+        "id": 2,
+        "name": "capriciosa",
+        "price": 13.50,
+        "description":"Some description"
+    },
+    { 
+        "id": 3,
+        "name": "prosciutta finesa",
+        "price": 13.99,
+        "description":"Some description"
+    },
+    { 
+        "id": 4,
+        "name": "la parma",
+        "price": 10.34,
         "description":"Some description"
     }
 ]

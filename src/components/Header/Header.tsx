@@ -1,0 +1,18 @@
+import React from "react";
+import LogoSVG from "./../../svg/pizza.svg";
+import styles from "./Header.module.css";
+
+const Header = () => {
+    return (
+        <header className={styles.root}>
+            <div className={styles.logo__positioner}>
+                <LogoSVG />
+            </div>
+            <h1 className={styles.title}>
+                Some title
+            </h1>
+        </header>
+    )
+}
+
+export default Header;
