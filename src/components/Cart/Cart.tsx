@@ -1,23 +1,24 @@
 import React from "react";
-import { CartContext, CartSetContext } from "../../context/cart";
 import styles from "./Cart.module.css";
-import { ICartPizza, TUseSetState } from "./../../context/cart";
+import { AppStateData, AppStateMethods } from "../AppState/AppState.provider";
+import { removeFromCart } from "../AppState/actions/cart";
+import { dispatchAction } from "../AppState/actions/interface";
+import { ICartItem } from "../AppState/interfaces/cartItem.interface";
 
-class CartRemoveButton extends React.Component<{ item: ICartPizza }, {}>{
+class CartRemoveButton extends React.Component<{ item: ICartItem }, {}>{
 
-    onClickHandlerRemove = (methods: TUseSetState) => {
-        this.props.item;
-        methods?.removeFromCart(this.props.item);
+    onClickHandlerRemove = (dispatch: dispatchAction) => {
+        if (typeof dispatch === "function") dispatch(removeFromCart(this.props.item))
     }
 
     render = () => {
         return (
-            <CartSetContext.Consumer>{(methods) => {
+            <AppStateMethods.Consumer>{(dispatch) => {
                 return (
-                    <button onClick={this.onClickHandlerRemove.bind(this, methods)}>&times;</button>
+                    <button onClick={this.onClickHandlerRemove.bind(this, dispatch)}>&times;</button>
                 )
             }}
-            </CartSetContext.Consumer>
+            </AppStateMethods.Consumer>
         )
     }
 }
@@ -47,7 +48,7 @@ class Cart extends React.Component<IProps, IState>{
         this.setState({ isOpen: !this.state.isOpen })
     }
 
-    getList = (items: Array<ICartPizza>): React.ReactNode => {
+    getList = (items: Array<ICartItem>): React.ReactNode => {
         return items.length
             ? (
                 <ul className={styles.cartList}>{
@@ -68,12 +69,12 @@ class Cart extends React.Component<IProps, IState>{
     render = () => {
 
         return (
-            <CartContext.Consumer>{state => {
-                const { items, total } = state;
+            <AppStateData.Consumer>{state => {
+                const { items, total, amount } = state.cart;
                 return (
                     <div className={styles.cart}>
                         <button className={styles.cartButton} onClick={this.onClickHandler}>
-                            {`Cart (${items.length}) = ${total}$`}
+                            {`Cart (${amount}) = ${total}$`}
                         </button>
                         <div style={{ display: this.state.isOpen ? "block" : "none" }}>
                             {this.getList(items)}
@@ -81,7 +82,7 @@ class Cart extends React.Component<IProps, IState>{
                     </div>
                 )
             }}
-            </CartContext.Consumer>
+            </AppStateData.Consumer>
         )
     }
 }

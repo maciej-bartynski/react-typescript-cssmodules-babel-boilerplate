@@ -5,33 +5,3 @@
     list-style: none;
     padding: 0
 }
-
-.listItem {
-    border: solid 5px #e99b64;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #f8d660;
-}
-
-.listItem__title {
-    color: #ed6262;
-    font-family: sans-serif;
-    text-transform: uppercase;
-    font-size: 20px;
-    margin: 0;
-    padding: 0;
-    letter-spacing: 2px;
-}
-
-.listItem__desc {
-    color: white;
-    letter-spacing: 1px;
-    padding: 5px 0;
-}
-
-.listItem__price {
-    color: #98b52b;
-    letter-spacing: 0.5px;
-    font-weight: bold;
-    text-align: right;
-}

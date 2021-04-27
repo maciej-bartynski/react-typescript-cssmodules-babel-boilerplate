@@ -15,7 +15,8 @@
         "id": 2,
         "name": "capriciosa",
         "price": 13.50,
-        "description":"Some description"
+        "description":"Some description",
+        "discount": 10
     },
     { 
         "id": 3,
@@ -27,6 +28,7 @@
         "id": 4,
         "name": "la parma",
         "price": 10.34,
-        "description":"Some description"
+        "description":"Some description",
+        "discount": 20
     }
 ]

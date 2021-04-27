@@ -3,15 +3,15 @@ import Pizzas from "./Pizza/Pizzas";
 import pizzas from "./../data/pizzas.json";
 import Header from "./Header/Header";
 import Cart from "./Cart/Cart";
-import { CartContextProvider } from "./../context/cart";
+import AppState from "./AppState/AppState.provider";
 
 const App = () => {
     return (
-        <CartContextProvider>
+        <AppState>
             <Header />
             <Cart />
             <Pizzas pizzas={pizzas}/>
-        </CartContextProvider>
+        </AppState>
     )
 }
 
