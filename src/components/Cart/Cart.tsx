@@ -4,21 +4,28 @@ import { AppStateData, AppStateMethods } from "../AppState/AppState.provider";
 import { removeFromCart } from "../AppState/actions/cart";
 import { dispatchAction } from "../AppState/actions/interface";
 import { ICartItem } from "../AppState/interfaces/cartItem.interface";
+import EditCart, { T_ManipulateCartItem } from "../AppState/EditCart";
 
 class CartRemoveButton extends React.Component<{ item: ICartItem }, {}>{
 
-    onClickHandlerRemove = (dispatch: dispatchAction) => {
-        if (typeof dispatch === "function") dispatch(removeFromCart(this.props.item))
+    onClickEditCart = (editCart: T_ManipulateCartItem) => {
+        editCart(this.props.item);
     }
 
     render = () => {
         return (
-            <AppStateMethods.Consumer>{(dispatch) => {
-                return (
-                    <button onClick={this.onClickHandlerRemove.bind(this, dispatch)}>&times;</button>
-                )
-            }}
-            </AppStateMethods.Consumer>
+            <EditCart>
+                {({ removeFromCart, addToCart }) => (
+                    <>
+                        <button onClick={this.onClickEditCart.bind(this, removeFromCart)}>
+                            <strong>-</strong>
+                        </button>
+                        <button onClick={this.onClickEditCart.bind(this, addToCart)}>
+                            <strong>+</strong>
+                        </button>
+                    </>
+                )}
+            </EditCart>
         )
     }
 }
@@ -32,16 +39,31 @@ interface IState {
 }
 
 class Cart extends React.Component<IProps, IState>{
-    pizzas = [{ name: "margherita" }, { name: "napoletana" }]
-    state: IState = {
-        isOpen: false,
-    }
+
+    #cartRef: React.RefObject<HTMLDivElement>;
+
+    state: IState;
 
     constructor(props: IProps) {
         super(props);
         this.state = {
             isOpen: false,
         }
+
+        this.#cartRef = React.createRef();
+    }
+
+    componentDidMount = () => {
+        document.addEventListener("mousedown", this.onClickOutsideHandler);
+    }
+
+    componentWillUnmount = () => {
+        document.removeEventListener("mousedown", this.onClickOutsideHandler);
+    }
+
+    onClickOutsideHandler: (e: MouseEvent) => any = (e) => {
+        if (this.#cartRef.current && !(this.#cartRef.current).contains(e.target as Node))
+            this.setState({ isOpen: false })
     }
 
     onClickHandler = () => {
@@ -72,7 +94,7 @@ class Cart extends React.Component<IProps, IState>{
             <AppStateData.Consumer>{state => {
                 const { items, total, amount } = state.cart;
                 return (
-                    <div className={styles.cart}>
+                    <div className={styles.cart} ref={this.#cartRef}>
                         <button className={styles.cartButton} onClick={this.onClickHandler}>
                             {`Cart (${amount}) = ${total}$`}
                         </button>
