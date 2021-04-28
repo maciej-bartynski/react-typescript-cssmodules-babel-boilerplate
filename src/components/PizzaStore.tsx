@@ -4,11 +4,14 @@ import pizzas from "./../data/pizzas.json";
 import Header from "./Header/Header";
 import Cart from "./Cart/Cart";
 import AppState from "./AppState/AppState.provider";
-import Routes from "./Routes"
 
 const App = () => {
     return (
-        <Routes/>
+        <AppState>
+            <Header />
+            <Cart />
+            <Pizzas pizzas={pizzas}/>
+        </AppState>
     )
 }
 
