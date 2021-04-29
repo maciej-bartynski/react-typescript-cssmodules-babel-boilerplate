@@ -1,8 +1,8 @@
 import React, { Children } from "react";
-import { useAppStateMethods } from "../AppState/AppState.provider";
-import { IProduct } from "../AppState/interfaces/product.interface";
-import { addToCart } from "../AppState/actions/cart";
-import { ICartItem } from "../AppState/interfaces/cartItem.interface";
+import { useAppStateMethods } from "../PizzaContext/AppState.provider";
+import { IProduct } from "../PizzaContext/interfaces/product.interface";
+import { addToCart } from "../PizzaContext/actions/cart";
+import { ICartItem } from "../PizzaContext/interfaces/cartItem.interface";
 
 export interface IProductAbstract extends IProduct {
     addToCart: () => void

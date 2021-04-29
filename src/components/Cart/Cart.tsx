@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Cart.module.css";
-import { AppStateData, AppStateMethods } from "../AppState/AppState.provider";
-import { removeFromCart } from "../AppState/actions/cart";
-import { dispatchAction } from "../AppState/actions/interface";
-import { ICartItem } from "../AppState/interfaces/cartItem.interface";
-import EditCart, { T_ManipulateCartItem } from "../AppState/EditCart";
+import { AppStateData, AppStateMethods } from "../PizzaContext/AppState.provider";
+import { removeFromCart } from "../PizzaContext/actions/cart";
+import { dispatchAction } from "../PizzaContext/actions/interface";
+import { ICartItem } from "../PizzaContext/interfaces/cartItem.interface";
+import EditCart, { T_ManipulateCartItem } from "../PizzaContext/EditCart";
 
 class CartRemoveButton extends React.Component<{ item: ICartItem }, {}>{
 

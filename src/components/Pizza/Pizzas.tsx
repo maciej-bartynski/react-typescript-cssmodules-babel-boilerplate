@@ -1,5 +1,5 @@
 import React from "react";
-import { IProduct } from "../AppState/interfaces/product.interface";
+import { IProduct } from "../PizzaContext/interfaces/product.interface";
 import styles from "./Pizzas.module.css";
 import PizzaRegular from "./../PizzaRegular/PizzaRegular";
 import PizzaSpecial from "./../PizzaSpecial/PizzaSpecial";

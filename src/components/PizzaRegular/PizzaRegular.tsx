@@ -1,6 +1,6 @@
 import React from "react";
-import { useAppStateMethods } from "../AppState/AppState.provider";
-import { IProduct } from "../AppState/interfaces/product.interface";
+import { useAppStateMethods } from "../PizzaContext/AppState.provider";
+import { IProduct } from "../PizzaContext/interfaces/product.interface";
 import PizzaAbstract, { IProductAbstract } from "../PizzaAbstract/PizzaAbstract";
 import styles from "./Pizzas.module.css";
 
